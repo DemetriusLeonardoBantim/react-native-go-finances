@@ -4,11 +4,12 @@ import {Container,Title} from './styles'
 
 interface Props extends TouchableOpacityProps {
   title: string
+
 }
 
-export function Button({ title }:Props){
+export function Button({ title, ...rest }: Props){
   return(
-    <Container>
+    <Container {...rest}>
       <Title>
         {title}
       </Title>
