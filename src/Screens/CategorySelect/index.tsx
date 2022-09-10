@@ -12,12 +12,19 @@ interface Category {
 }
 
 interface Props {
-  category: string;
+  category: Category;
   setCategory: (name: Category) => void;
   closeSelectCategory: () => void;
 }
 
+
+
 export function CategorySelect({category, setCategory, closeSelectCategory }: Props){
+  
+  function handleCategorySelect(item: Category) {
+    setCategory(item)
+  }
+
   return(
     <Container>
       <Header>
@@ -27,14 +34,14 @@ export function CategorySelect({category, setCategory, closeSelectCategory }: Pr
       </Header>
 
       <FlatList data={categories}  style={{ flex: 1, width: '100%' }} ItemSeparatorComponent={ () => <Separator/> }    keyExtractor={(item) => item.key} renderItem={({item}) => (
-        <Category>
+        <Category onPress={() => handleCategorySelect(item)} isActive={category.key === item.key}>
           <Icon name={item.icon} />
           <Name>{item.name} </Name>
         </Category>
       )}/>
 
       <Footer>
-        <Button title="Selecionar" />
+        <Button title="Enviar" onPress={closeSelectCategory} />
       </Footer>
     </Container>
   )
