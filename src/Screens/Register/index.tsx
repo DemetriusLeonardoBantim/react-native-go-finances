@@ -1,6 +1,7 @@
-import React, {useState} from 'react'
+import React, {useState ,useEffect} from 'react'
 import {Keyboard, Modal, TouchableWithoutFeedback, Alert} from 'react-native'
 import {Container, Header, Title, Form, Fields, TransactionsType} from './style'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {Button} from '../../Components/Forms/Button'
 import { TransactionTypeButton } from '../../Components/Forms/TransactionTypeButton'
@@ -36,7 +37,7 @@ export function Register(){
     setTransactionType(type)
   }
 
-  function handleRegister(form: FormData){
+  async function handleRegister(form: FormData){
     if(!transactionType) return Alert.alert('Selecione o tipo de transação')
 
     if(category.key === 'category') return Alert.alert('Selecione a categoria')
@@ -46,6 +47,15 @@ export function Register(){
       amount: form.amount,
       transactionType,
       category: category.key
+    }
+
+    try {
+      const dataKey = '@gofinances:transactions'
+      await AsyncStorage.setItem(dataKey, JSON.stringify(data))
+
+    }catch(error){
+      console.log(error)
+      Alert.alert('Não foi possível salvar')
     }
 
     console.log(data)
@@ -64,6 +74,15 @@ export function Register(){
   function handleCloseSelectCategoryModal() {
     setCategoryModalOpen(false)
   }
+
+  useEffect(() => {
+    async function loadData(){
+      const dataKey = '@gofinances:transactions'
+     const response = await AsyncStorage.getItem(dataKey)
+      console.log(JSON.parse(response))
+    } 
+    loadData()
+  }, [])
 
   return(
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>

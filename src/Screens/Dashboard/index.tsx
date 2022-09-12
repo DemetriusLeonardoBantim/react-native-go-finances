@@ -12,7 +12,8 @@ import {
     HighlightCards, 
     Transactions, 
     Title,
-    TransactionList
+    TransactionList,
+    LogoutButton
   } from './style'
 import {HighlightCard} from '../../Components/HighlightCard'
 import {TransactionCard, TransactionCardProps} from '../../Components/TransactionCard'
