@@ -1,4 +1,4 @@
-import { RFValue } from "react-native-responsive-fontsize";
+import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import styled from "styled-components/native";
 
 export const Container = styled.View`
@@ -29,18 +29,23 @@ export const Title = styled.Text`
 `
 
 export const Footer = styled.View`
-  font-family: ${({theme}) => theme.fonts.regular};
-  color: ${({theme}) => theme.colors.shape};
-  font-size: ${RFValue(16)}px;
+  width: 100%;
+  height: 30%;
+  background-color: ${({ theme }) => theme.colors.seconday};
+`
 
+export const SignInTitle = styled.Text`
+  font-family: ${({ theme }) => theme.fonts.regular};
+  font-size: ${RFValue(16)}px;
+  color: ${({ theme }) => theme.colors.shape};
   text-align: center;
   margin-top: 80px;
   margin-bottom: 67px;
 `
 
-export const SignInTitle = styled.Text`
-  width: 100%;
-  height: 30%;
+export const FooterWrapper= styled.View`
+  margin-top: ${RFPercentage(-4)}px;
+  padding: 0 32px;
 
-  background-color: ${({theme}) => theme.colors.seconday};
+  justify-content: space-between;
 `
