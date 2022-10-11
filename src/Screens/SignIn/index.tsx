@@ -7,9 +7,12 @@ import GoogleSvg from '../../assets/google.svg'
 import LogoSvg from '../../assets/logo.svg'
 import { RFValue } from 'react-native-responsive-fontsize'
 import {SignInSocialButton} from '../../Components/SignInSocialButton'
+import { useAuth } from '../../hooks/auth'
 
 
 export function SignIn(){
+  const data = useAuth()
+
   return (
     <Container>
       <Header>
