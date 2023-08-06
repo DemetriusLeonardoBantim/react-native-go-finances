@@ -4,11 +4,8 @@ import 'intl'
 import 'intl/locale-data/jsonp/pt-BR'
 import theme from './src/Global/stytles/theme'
 import { useFonts, Poppins_400Regular, Poppins_500Medium, Poppins_700Bold } from '@expo-google-fonts/poppins'
-import {AppRoutes} from './src/routes/app.routes'
-import {NavigationContainer} from '@react-navigation/native'
+import {Routes} from './src/routes'
 import { AuthProvider } from './src/hooks/auth'
-
-import {SignIn} from './src/Screens/SignIn'
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -20,11 +17,9 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <NavigationContainer>
         <AuthProvider>
-          <SignIn />
+          <Routes />
         </AuthProvider>
-      </NavigationContainer>
     </ThemeProvider>
   );
 }

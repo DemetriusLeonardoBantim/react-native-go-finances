@@ -6,11 +6,12 @@ import {Button, ImageContainer, Text} from './styles'
 interface Props extends RectButtonProps {
   title: string
   svg: React.FC<SvgProps>
+  onPress(): void;
 }
 
-export function SignInSocialButton({svg: Svg, title} : Props) {
+export function SignInSocialButton({svg: Svg, title, onPress } : Props) {
   return (
-    <Button>
+    <Button onPress={onPress}>
       <ImageContainer>
         <Svg />
       </ImageContainer>

@@ -5,6 +5,7 @@ import { getBottomSpace, getStatusBarHeight } from 'react-native-iphone-x-helper
 import {DataListProps} from '.';
 import {FlatList} from 'react-native'
 import {BorderlessButton} from 'react-native-gesture-handler'
+import {TouchableOpacity} from 'react-native'
 
 export const Container = styled.View`
   flex: 1;
@@ -69,7 +70,7 @@ export const Icon = styled(Feather)`
   color: ${({theme}) => theme.colors.seconday};
   font-size: ${RFValue(24)}px;
   `
-export const LogoutButton = styled(BorderlessButton)`
+export const LogoutButton = styled(TouchableOpacity)`
 
 `
 
